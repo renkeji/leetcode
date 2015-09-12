@@ -42,7 +42,6 @@ public class Q273 extends Solution {
             }
             i -= 3;
         }
-        // 0 < num <= 999
         return ans.trim();
     }
 
