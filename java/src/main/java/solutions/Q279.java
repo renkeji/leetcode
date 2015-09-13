@@ -27,8 +27,7 @@ public class Q279 extends Solution {
 //        if (n <= 0) {
 //            return 0;
 //        } else {
-//            Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
-//            return numSquares(n, hm);
+//            return numSquares(n, new HashMap<Integer, Integer>());
 //        }
 //    }
 
