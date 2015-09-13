@@ -22,18 +22,18 @@ public class Q271 extends Solution {
             char[] charArray = s.toCharArray();
             int i = 0;
             while (i < charArray.length) {
-                StringBuilder sb = new StringBuilder();
+                String str = "";
                 while (i < charArray.length) {
                     if (charArray[i] != '*') {
-                        sb.append(charArray[i]);
+                        str += charArray[i];
                         ++i;
                     } else {
                         if (charArray[i+1] == 'n') {
-                            ans.add(sb.toString());
+                            ans.add(str);
                             i += 2;
                             break;
                         } else {
-                            sb.append('*');
+                            str += '*';
                             i += 2;
                         }
                     }
