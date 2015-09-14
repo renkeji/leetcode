@@ -46,7 +46,7 @@ public class Q267 extends Solution {
                 generatePalindromes(str, counts, index+1, limit, single, ans);
                 str = str.substring(0, str.length()-1);
                 counts[curr] += 2;
-                curr = getNextChar(counts, (int) curr + 1);
+                curr = getNextChar(counts, (int)curr + 1);
             }
         }
     }
