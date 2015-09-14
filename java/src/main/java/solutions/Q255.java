@@ -10,8 +10,7 @@ package solutions;
 public class Q255 extends Solution {
 
     public boolean verifyPreorder(int[] preorder) {
-        return !(preorder == null || preorder.length == 0)
-            && verifyPreorder(preorder, 0, preorder.length - 1);
+        return verifyPreorder(preorder, 0, preorder.length - 1);
     }
 
     private boolean verifyPreorder(int[] preorder, int left, int right) {
