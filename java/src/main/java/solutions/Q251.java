@@ -23,20 +23,20 @@ public class Q251 extends Solution {
                 return o1.start - o2.start;
             }
         });
-        Map<Integer, Integer> sm = new TreeMap<>();
+        Map<Integer, Integer> map = new TreeMap<>();
         for (Interval i : intervals) {
-            if (!sm.containsKey(i.start)) {
-                sm.put(i.start, 0);
+            if (!map.containsKey(i.start)) {
+                map.put(i.start, 0);
             }
-            sm.put(i.start, sm.get(i.start) + 1);
-            if (!sm.containsKey(i.end)) {
-                sm.put(i.end, 0);
+            map.put(i.start, map.get(i.start) + 1);
+            if (!map.containsKey(i.end)) {
+                map.put(i.end, 0);
             }
-            sm.put(i.end, sm.get(i.end) - 1);
+            map.put(i.end, map.get(i.end) - 1);
         }
         int rooms = 0;
         int max = 0;
-        for (Map.Entry<Integer, Integer> entry : sm.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             rooms += entry.getValue();
             max = Math.max(max, rooms);
         }
