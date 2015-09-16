@@ -1,8 +1,8 @@
 package solutions;
 
-import solutions.utils.Utils;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Given a string, we can "shift" each of its letter to its successive letter,
