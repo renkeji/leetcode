@@ -1,9 +1,14 @@
 # Leetcode
 
-Leetcode solutions in four programming languages: [Java], [Scala], [Python] and [JavaScript].
+Leetcode solutions in four programming languages: 
+* **Java**
+* **Scala**
+* **Python**
+* **JavaScript**.
 
-* Build tool for Java and Scala is SBT.
-* Build tool for Python is PyBuilder.
-* Build tool for JavaScript is Grunt.
+Build tools:
+* Java + Scala: SBT.
+* Python: PyBuilder.
+* JavaScript: Grunt.
 
 Contact email: renkeji84@gmail.com.
