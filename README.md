@@ -1,6 +1,6 @@
 # leetcode
 
-Leetcode solutions in four programming languages: Java, Scala, Pyton and JavScript.
+Leetcode solutions in four programming languages: Java, Scala, Python and JavScript.
 
 Build tool for Java and Scala is SBT.
 Build tool for Python is pybuilder.
