@@ -3,6 +3,15 @@ package solutions;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Given a string s, return all the palindromic permutations (without duplicates) of it.
+ * Return an empty list if no palindromic permutation could be form.
+ *
+ * For example:
+ *  Given s = "aabb", return ["abba", "baab"].
+ *  Given s = "abc", return [].
+ */
+
 public class Q267 extends Solution {
 
     private String getSingleChars(String s, int[] counts) {
