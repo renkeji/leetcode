@@ -8,7 +8,9 @@ package solutions;
  * Note that 1 is typically treated as an ugly number.
  */
 
-// Reference: http://www.geeksforgeeks.org/ugly-numbers/
+/**
+ * <a href="http://www.geeksforgeeks.org/ugly-numbers/">Reference on GeeksforGeeks</a>
+ */
 public class Q264 extends Solution {
 
     public int nthUglyNumber(int n) {
