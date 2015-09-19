@@ -24,7 +24,7 @@ import java.util.Stack;
  *  Recursive solution is trivial, could you do it iteratively?
  */
 
-public class Q94 extends Solution {
+public class Q094 extends Solution {
 
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
