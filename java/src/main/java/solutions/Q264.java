@@ -9,7 +9,7 @@ package solutions;
  */
 
 /**
- * <a href="http://www.geeksforgeeks.org/ugly-numbers/">Reference on GeeksforGeeks</a>
+ * @see <a href="http://www.geeksforgeeks.org/ugly-numbers/">Reference on GeeksforGeeks</a>
  */
 public class Q264 extends Solution {
 
