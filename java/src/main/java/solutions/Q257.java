@@ -24,19 +24,19 @@ public class Q257 extends Solution {
 
     private void binaryTreePaths(TreeNode node, List<TreeNode> path, List<String> ans) {
         if (node != null) {
-            path.add(node);
             if (node.left == null && node.right == null) {
                 String s = "";
-                for (int i = 0; i < path.size() - 1; ++i) {
-                    s += path.get(i).val + "->";
+                for (TreeNode n : path) {
+                    s += n.val + "->";
                 }
-                s += path.get(path.size() - 1).val;
+                s += node.val;
                 ans.add(s);
             } else {
+                path.add(node);
                 binaryTreePaths(node.left, path, ans);
                 binaryTreePaths(node.right, path, ans);
+                path.remove(path.size() - 1);
             }
-            path.remove(path.size() - 1);
         }
     }
 
