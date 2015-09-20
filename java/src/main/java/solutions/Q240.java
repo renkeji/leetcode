@@ -21,7 +21,6 @@ package solutions;
 
 public class Q240 extends Solution {
 
-
     // O(colLen + rowLen) time + O(1) space
 //    public boolean searchMatrix(int[][] matrix, int target) {
 //        int row = 0, col = matrix[0].length - 1;
