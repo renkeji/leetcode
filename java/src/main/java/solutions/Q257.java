@@ -42,9 +42,7 @@ public class Q257 extends Solution {
 
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> ans = new ArrayList<>();
-        if (root != null) {
-            binaryTreePaths(root, new ArrayList<TreeNode>(), ans);
-        }
+        binaryTreePaths(root, new ArrayList<TreeNode>(), ans);
         return ans;
     }
 
