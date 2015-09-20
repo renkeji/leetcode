@@ -30,9 +30,7 @@ public class Q241 extends Solution {
 
     private List<Integer> diffWaysToCompute(String input, Map<String, List<Integer>> hm) {
         List<Integer> ans = new ArrayList<>();
-        if (input == null || input.isEmpty()) {
-            return ans;
-        } else {
+        if (input != null && !input.isEmpty()) {
             for (int i = 0; i < input.length(); ++i) {
                 char op = input.charAt(i);
                 if (op < '0' || op > '9') {
@@ -57,8 +55,8 @@ public class Q241 extends Solution {
                 ans.add(Integer.parseInt(input));
             }
             hm.put(input, ans);
-            return ans;
         }
+        return ans;
     }
 
     private int compute(int num1, int num2, char op) {
