@@ -40,7 +40,7 @@ public class Q239 extends Solution {
                 while (!q.isEmpty() && nums[i] >= nums[q.getLast()]) {
                     q.removeLast();
                 }
-                q.add(i);
+                q.addLast(i);
             }
             for (int i = k; i < nums.length; ++i) {
                 ans[i-k] = nums[q.get(0)];
