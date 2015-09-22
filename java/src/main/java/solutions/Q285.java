@@ -14,11 +14,9 @@ public class Q285 extends Solution {
         if (root == null || p == null) {
             return null;
         } else {
-            if (p.val < root.val) {
-                TreeNode left = inorderSuccessor(root.left, p);
-                if (left != null) {
-                    return left;
-                }
+            TreeNode left = inorderSuccessor(root.left, p);
+            if (left != null) {
+                return left;
             }
             if (p.val < root.val) {
                 return root;
