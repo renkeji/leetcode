@@ -12,11 +12,11 @@ package solutions;
 public class Q198 extends Solution {
 
     public int rob(int[] nums) {
-        if (nums == null || nums.length < 2) {
+        if (nums == null || nums.length == 0) {
             return 0;
         } else {
             int dp_2 = nums[0];
-            int dp_1 = nums[1];
+            int dp_1 = nums.length > 1 ? Math.max(nums[0], nums[1]) : 0;
             int dp = Math.max(dp_2, dp_1);
             for (int i = 2; i < nums.length; ++i) {
                 dp = Math.max(dp_2 + nums[i], dp_1);
