@@ -9,7 +9,7 @@ package solutions;
  * determine the maximum amount of money you can rob tonight without alerting the police.
  */
 
-public class Q198 {
+public class Q198 extends Solution {
 
     public int rob(int[] nums) {
         if (nums == null || nums.length < 2) {
