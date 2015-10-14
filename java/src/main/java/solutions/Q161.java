@@ -7,8 +7,8 @@ package solutions;
 public class Q161 extends Solution {
 
     public boolean isOneEditDistance(String s, String t) {
-        String small = s.length() <= t.length() ? s : t;
-        String large = s.length() > t.length() ? s : t;
+        String small = s.length() < t.length() ? s : t;
+        String large = s.length() < t.length() ? t : s;
         boolean isDiff = false;
         int i = 0, j = 0;
         while (i < small.length() && j < large.length()) {
