@@ -17,19 +17,16 @@ public class Q161 extends Solution {
                     return false;
                 } else {
                     isDiff = true;
-                    if (j < large.length() -1 && small.charAt(i) == large.charAt(j + 1)) {
-                        ++j;
+                    if (small.length() == large.length()) {
+                        ++i;
                     }
                 }
+            } else {
+                ++i;
             }
-            ++i;
             ++j;
         }
-        if (!isDiff) {
-            return i == small.length() && large.length() - j == 1;
-        } else {
-            return i == small.length() && large.length() - j == 0;
-        }
+        return isDiff ? large.length() - j == 0 : large.length() - j == 1;
     }
 
 }
