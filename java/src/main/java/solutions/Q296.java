@@ -23,7 +23,6 @@ import java.util.List;
 public class Q296 extends Solution {
 
     public int minTotalDistance(int[][] grid) {
-        int min = 0;
         if (grid != null && grid.length != 0 && grid[0].length != 0) {
             List<Integer> xPoints = new ArrayList<>();
             List<Integer> yPoints = new ArrayList<>();
@@ -39,7 +38,7 @@ public class Q296 extends Solution {
             int yMedian = findMedian(yPoints);
             return calcDistance(xMedian, xPoints) + calcDistance(yMedian, yPoints);
         }
-        return min;
+        return 0;
     }
 
     private int findMedian(List<Integer> values) {
