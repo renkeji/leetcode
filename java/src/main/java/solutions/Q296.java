@@ -25,19 +25,19 @@ public class Q296 extends Solution {
     public int minTotalDistance(int[][] grid) {
         int min = 0;
         if (grid != null && grid.length != 0 && grid[0].length != 0) {
-            List<Integer> x = new ArrayList<>();
-            List<Integer> y = new ArrayList<>();
+            List<Integer> xPoints = new ArrayList<>();
+            List<Integer> yPoints = new ArrayList<>();
             for (int i = 0; i < grid.length; ++i) {
                 for (int j = 0; j < grid[0].length; ++j) {
                     if (grid[i][j] == 1) {
-                        x.add(i);
-                        y.add(j);
+                        xPoints.add(i);
+                        yPoints.add(j);
                     }
                 }
             }
-            int xMedian = findMedian(x);
-            int yMedian = findMedian(y);
-            return calcDistance(xMedian, x) + calcDistance(yMedian, y);
+            int xMedian = findMedian(xPoints);
+            int yMedian = findMedian(yPoints);
+            return calcDistance(xMedian, xPoints) + calcDistance(yMedian, yPoints);
         }
         return min;
     }
