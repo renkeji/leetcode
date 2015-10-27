@@ -1,2 +1,5 @@
+from abc import ABCMeta
+
+
 class Solution(object):
-    pass
+    __metaclass__ = ABCMeta
