@@ -20,6 +20,8 @@ class Q006(Solution):
         :type numRows: int
         :rtype: str
         """
+        if numRows == 1:
+            return s
         rows = [""] * numRows
         index, step = -1, 1
         for i in range(len(s)):
