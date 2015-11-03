@@ -36,6 +36,5 @@ class Q007(Solution):
             right_num = (x % math.pow(10, i + 1)) // math.pow(10, i)
             ans += left_num * math.pow(10, i) + right_num * math.pow(10, l - i - 1)
             x -= left_num * math.pow(10, l - i - 1) + right_num * math.pow(10, i)
-        ans = ans + x if l % 2 == 1 else ans
-        ans = -ans if is_negative else ans
+        ans = ans + x if l % 2 == 1 else -ans if is_negative else ans
         return int(ans) if lower <= ans <= upper else 0
