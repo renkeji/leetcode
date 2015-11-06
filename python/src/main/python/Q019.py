@@ -1,5 +1,7 @@
 from src.main.python.Solution import Solution
 
+from src.main.python.datastructures.ListNode import ListNode
+
 # Given a linked list, remove the nth node from the end of list and return its head.
 #
 # For example,
@@ -11,7 +13,6 @@ from src.main.python.Solution import Solution
 # Note:
 #   Given n will always be valid.
 #   Try to do this in one pass.
-from src.main.python.datastructures.ListNode import ListNode
 
 
 class Q019(Solution):
