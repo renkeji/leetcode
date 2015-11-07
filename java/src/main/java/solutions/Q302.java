@@ -53,28 +53,24 @@ public class Q302 extends Solution {
             Boundary downBoundary = getBoundary(image, x+1, y, visited);
             Boundary leftBoundary = getBoundary(image, x, y-1, visited);
             Boundary rightBoundary = getBoundary(image, x, y+1, visited);
-            if (upBoundary != null) {
-                boundary = updateBoundary(upBoundary, boundary);
-            }
-            if (downBoundary != null) {
-                boundary = updateBoundary(downBoundary, boundary);
-            }
-            if (leftBoundary != null) {
-                boundary = updateBoundary(leftBoundary, boundary);
-            }
-            if (rightBoundary != null) {
-                boundary = updateBoundary(rightBoundary, boundary);
-            }
+            boundary = updateBoundary(upBoundary, boundary);
+            boundary = updateBoundary(downBoundary, boundary);
+            boundary = updateBoundary(leftBoundary, boundary);
+            boundary = updateBoundary(rightBoundary, boundary);
             return boundary;
         }
     }
 
     private Boundary updateBoundary(Boundary b1, Boundary b2) {
-        int up = Math.min(b1.up, b2.up);
-        int down = Math.max(b1.down, b2.down);
-        int left = Math.min(b1.left, b2.left);
-        int right = Math.max(b1.right, b2.right);
-        return new Boundary(up, down, left, right);
+        if (b1 == null) {
+            return b2;
+        } else {
+            int up = Math.min(b1.up, b2.up);
+            int down = Math.max(b1.down, b2.down);
+            int left = Math.min(b1.left, b2.left);
+            int right = Math.max(b1.right, b2.right);
+            return new Boundary(up, down, left, right);
+        }
     }
 
 }
