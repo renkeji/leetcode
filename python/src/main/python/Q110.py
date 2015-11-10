@@ -7,27 +7,26 @@ from src.main.python.Solution import Solution
 
 
 class Q110(Solution):
-    class Solution(object):
-        def isBalanced(self, root):
-            """
-            :type root: TreeNode
-            :rtype: bool
-            """
-            def get_height(node):
-                if not node:
-                    return 0
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        def get_height(node):
+            if not node:
+                return 0
 
-                left = get_height(node.left)
-                if left == -1:
-                    return -1
+            left = get_height(node.left)
+            if left == -1:
+                return -1
 
-                right = get_height(node.right)
-                if right == -1:
-                    return -1
+            right = get_height(node.right)
+            if right == -1:
+                return -1
 
-                if abs(left - right) > 1:
-                    return -1
+            if abs(left - right) > 1:
+                return -1
 
-                return max(left, right) + 1
+            return max(left, right) + 1
 
-            return get_height(root) != -1
+        return get_height(root) != -1
