@@ -1,7 +1,6 @@
 package solutions;
 
 import junit.framework.TestCase;
-
 import solutions.Q303.NumArray;
 
 public class Q303Test extends TestCase {
