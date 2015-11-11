@@ -1,5 +1,5 @@
 from src.main.python.Solution import Solution
-from src.main.python.datastructures import TreeNode
+from src.main.python.datastructures.TreeNode import TreeNode
 
 # Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
 
