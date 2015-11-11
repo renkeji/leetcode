@@ -10,16 +10,10 @@ class Q108(Solution):
         :type nums: List[int]
         :rtype: TreeNode
         """
-        def sorted_array_to_bst(nums, left, right):
-            if left > right:
-                return None
-            mid = left + (right-left)//2
-            node = TreeNode(nums[mid])
-            node.left = sorted_array_to_bst(nums, left, mid-1)
-            node.right = sorted_array_to_bst(nums, mid+1, right)
-            return node
-
-        root = None
-        if nums:
-            root = sorted_array_to_bst(nums, 0, len(nums)-1)
-        return root
+        if not nums:
+            return None
+        mid = len(nums)//2
+        node = TreeNode(nums[mid])
+        node.left = self.sortedArrayToBST(nums[:mid])
+        node.right = self.sortedArrayToBST(nums[mid+1:])
+        return node
