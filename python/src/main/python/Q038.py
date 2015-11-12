@@ -29,10 +29,9 @@ class Q038(Solution):
             ans += str(count) + char
             return ans
 
-        if n <= 0:
-            return ""
-        else:
+        ans = ""
+        if n >= 1:
             ans = "1"
             for i in range(2, n+1):
                 ans = count_and_say(ans)
-            return ans
+        return ans
