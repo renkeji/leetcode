@@ -22,15 +22,15 @@ class Q109(Solution):
                 return None
             mid = left + (right-left)//2
             left_node = sorted_list_to_bst(left, mid-1)
-            new_node = TreeNode(self.head.val)
+            new_node = TreeNode(self.__class__.head.val)
             new_node.left = left_node
-            self.head = self.head.next
+            self.__class__.head = self.__class__.head.next
             new_node.right = sorted_list_to_bst(mid+1, right)
             return new_node
 
         root = None
         if head:
-            self.head = head
+            self.__class__.head = head
             cnt = count_nodes(head)
             root = sorted_list_to_bst(0, cnt-1)
         return root
