@@ -14,7 +14,7 @@ class Q003(Solution):
         """
         max_len = 0
         if s:
-            i, j = 0, 0
+            i = j = 0
             table = [False] * 256
             while j < len(s):
                 if table[ord(s[j])]:
