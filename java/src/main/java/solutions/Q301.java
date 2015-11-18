@@ -14,7 +14,7 @@ import java.util.*;
  */
 
 public class Q301 extends Solution {
-
+    // BFS
     public List<String> removeInvalidParentheses(String s) {
         List<String> ans = new ArrayList<>();
         if (s != null) {
@@ -63,5 +63,14 @@ public class Q301 extends Solution {
         }
         return count == 0;
     }
+
+    // DFS
+//    public List<String> removeInvalidParentheses(String s) {
+//        List<String> ans = new ArrayList<>();
+//        if (s != null) {
+//
+//        }
+//        return ans;
+//    }
 
 }
