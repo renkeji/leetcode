@@ -1,7 +1,5 @@
 package solutions;
 
-import javax.jnlp.IntegrationService;
-
 /**
  * Additive number is a positive integer whose digits can form additive sequence.
  *
@@ -53,7 +51,7 @@ public class Q306 extends Solution {
         } else {
             for (int i = 1; i <= num.length(); ++i) {
                 long sum = Long.parseLong(num.substring(0, i));
-                if (sum > 0 && num.charAt(0) == '0') {
+                if (sum > 0 && num.startsWith("0")) {
                     return false;
                 }
                 if (num1 + num2 == sum) {
