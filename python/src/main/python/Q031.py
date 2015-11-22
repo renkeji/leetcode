@@ -26,13 +26,13 @@ class Q031(Solution):
 
         if nums:
             index1, index2 = -1, -1
-            for i in range(len(nums)-2, -1, -1):
+            for i in reversed(range(len(nums)-1)):
                 if nums[i] < nums[i+1]:
                     index1 = i; break
             if index1 == -1:
                 inplace_reverse(nums, 0, len(nums)-1)
                 return
-            for i in range(len(nums)-1, -1, -1):
+            for i in reversed(range(len(nums))):
                 if nums[i] > nums[index1]:
                     index2 = i; break
             nums[index1], nums[index2] = nums[index2], nums[index1]
