@@ -25,7 +25,7 @@ import java.util.List;
 public class Q210 extends Solution {
 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        List<Integer> order = new ArrayList<Integer>();
+        List<Integer> order = new ArrayList<>();
         int[] preCount = new int[numCourses];
         for (int[] p : prerequisites) {
             preCount[p[0]]++;
