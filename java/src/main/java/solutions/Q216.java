@@ -35,7 +35,7 @@ public class Q216 extends Solution {
                 sum += i;
             }
             if (sum == n) {
-                ans.add(new ArrayList<Integer>(path));
+                ans.add(new ArrayList<>(path));
             }
         } else {
             int start = path.isEmpty() ? 1 : path.get(path.size() - 1) + 1;
