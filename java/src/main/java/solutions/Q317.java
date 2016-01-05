@@ -49,8 +49,9 @@ public class Q317 extends Solution {
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                if (grid[i][j] == 0 && dist[i][j] != 0 && nums[i][j] == buildingNum)
+                if (grid[i][j] == 0 && dist[i][j] != 0 && nums[i][j] == buildingNum) {
                     min = Math.min(min, dist[i][j]);
+                }
             }
         }
 
