@@ -32,10 +32,8 @@ public class Q140 extends Solution {
                         list.add(left);
                     } else {
                         List<String> subs = cache.containsKey(right) ? cache.get(right) : wordBreak(right, dict, cache);
-                        if (!subs.isEmpty()) {
-                            for (String sub : subs) {
-                                list.add(left + " " + sub);
-                            }
+                        for (String sub : subs) {
+                            list.add(left + " " + sub);
                         }
                     }
                 }
