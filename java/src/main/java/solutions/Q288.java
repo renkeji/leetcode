@@ -39,7 +39,7 @@ public class Q288 extends Solution {
         public ValidWordAbbr(String[] dictionary) {
             words = new HashSet<>(Arrays.asList(dictionary));
             hm = new HashMap<>();
-            for (String word : dictionary) {
+            for (String word : words) {
                 String abbr = abbreviation(word);
                 if (!hm.containsKey(abbr)) {
                     hm.put(abbr, 0);
