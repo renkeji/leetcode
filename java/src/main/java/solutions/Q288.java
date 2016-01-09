@@ -3,9 +3,9 @@ package solutions;
 import java.util.*;
 
 /**
- * An abbreviation of a word follows the form <first letter><number><last letter>. Below are some examples of word abbreviations:
+ * An abbreviate of a word follows the form <first letter><number><last letter>. Below are some examples of word abbreviations:
  *
- * a) it                      --> it    (no abbreviation)
+ * a) it                      --> it    (no abbreviate)
  *
  *      1
  * b) d|o|g                   --> d1g
@@ -18,8 +18,8 @@ import java.util.*;
  *      1---5----0
  * d) l|ocalizatio|n          --> l10n
  *
- * Assume you have a dictionary and given a word, find whether its abbreviation is unique in the dictionary.
- * A word's abbreviation is unique if no other word from the dictionary has the same abbreviation.
+ * Assume you have a dictionary and given a word, find whether its abbreviate is unique in the dictionary.
+ * A word's abbreviate is unique if no other word from the dictionary has the same abbreviate.
  *
  * Example:
  *  Given dictionary = [ "deer", "door", "cake", "card" ]
@@ -40,7 +40,7 @@ public class Q288 extends Solution {
             words = new HashSet<>(Arrays.asList(dictionary));
             hm = new HashMap<>();
             for (String word : words) {
-                String abbr = abbreviation(word);
+                String abbr = abbreviate(word);
                 if (!hm.containsKey(abbr)) {
                     hm.put(abbr, 0);
                 }
@@ -49,7 +49,7 @@ public class Q288 extends Solution {
         }
 
         public boolean isUnique(String word) {
-            String abbr = abbreviation(word);
+            String abbr = abbreviate(word);
             if (!words.contains(word)) {
                 return !hm.containsKey(abbr);
             } else {
@@ -57,7 +57,7 @@ public class Q288 extends Solution {
             }
         }
 
-        private String abbreviation(String word) {
+        private String abbreviate(String word) {
             if (word == null || word.length() <= 2) {
                 return word;
             } else {
