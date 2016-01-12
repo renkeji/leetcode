@@ -27,11 +27,11 @@ public class Q228 extends Solution {
                     start = nums[i];
                 }
             }
-            if (len > 1 && nums[len - 1] == nums[len - 2] + 1) {
+            if (nums[len - 1] != start) {
                 String range = String.valueOf(start) + "->" + String.valueOf(nums[len - 1]);
                 ans.add(range);
             } else {
-                ans.add(String.valueOf(nums[len - 1]));
+                ans.add(String.valueOf(start));
             }
         }
         return ans;
