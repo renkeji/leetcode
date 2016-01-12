@@ -17,18 +17,18 @@ public class Q228 extends Solution {
             int len = nums.length;
             int start = nums[0];
             for (int i = 1; i < len; ++i) {
-                if (nums[i] != nums[i - 1] + 1) {
-                    if (nums[i - 1] != start) {
-                        String range = String.valueOf(start) + "->" + String.valueOf(nums[i - 1]);
+                if (nums[i] != nums[i-1] + 1) {
+                    if (nums[i-1] != start) {
+                        String range = String.valueOf(start) + "->" + String.valueOf(nums[i-1]);
                         ans.add(range);
                     } else {
-                        ans.add(String.valueOf(nums[i - 1]));
+                        ans.add(String.valueOf(nums[i-1]));
                     }
                     start = nums[i];
                 }
             }
-            if (nums[len - 1] != start) {
-                String range = String.valueOf(start) + "->" + String.valueOf(nums[len - 1]);
+            if (nums[len-1] != start) {
+                String range = String.valueOf(start) + "->" + String.valueOf(nums[len-1]);
                 ans.add(range);
             } else {
                 ans.add(String.valueOf(start));
