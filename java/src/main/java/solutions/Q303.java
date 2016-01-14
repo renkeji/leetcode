@@ -19,14 +19,12 @@ public class Q303 extends Solution {
 
     public class NumArray {
 
-        int[] table;
+        private int[] table;
 
         public NumArray(int[] nums) {
-            table = new int[nums.length + 1];
-            int sum = 0;
+            table = new int[nums.length+1];
             for (int i = 0; i < nums.length; ++i) {
-                sum += nums[i];
-                table[i+1] = sum;
+                table[i+1] = table[i] + nums[i];
             }
         }
 
