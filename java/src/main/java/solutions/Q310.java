@@ -37,23 +37,10 @@ public class Q310 extends Solution {
 
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         List<Integer> leaf = new ArrayList<>();
-        if (n <= 1) {
-            leaf.add(0);
-            return leaf;
-        }
-
-        List<List<Integer>> graph = new ArrayList<>();
-        for (int i = 0; i < n; ++i){
-            graph.add(new ArrayList<Integer>());
-        }
-
-        for (int[] edge : edges) {
-            graph.get(edge[0]).add(edge[1]);
-            graph.get(edge[1]).add(edge[0]);
-        }
+        List<List<Integer>> graph = constructGraph(n, edges);
 
         for (int i = 0; i < n; ++i) {
-            if (graph.get(i).size() == 1) {
+            if (graph.get(i).size() <= 1) {
                 leaf.add(i);
             }
         }
@@ -72,6 +59,19 @@ public class Q310 extends Solution {
             leaf = newLeaf;
         }
         return leaf;
+    }
+
+    private List<List<Integer>> constructGraph(int n, int[][] edges) {
+        List<List<Integer>> graph = new ArrayList<>(n);
+        for (int i = 0; i < n; ++i){
+            graph.add(new ArrayList<Integer>());
+        }
+
+        for (int[] edge : edges) {
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
+        }
+        return graph;
     }
 
 }
