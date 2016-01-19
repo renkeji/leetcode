@@ -17,8 +17,8 @@ public class Q155 extends Solution {
         private Stack<Integer> min;
 
         public MinStack() {
-            s = new Stack<Integer>();
-            min = new Stack<Integer>();
+            s = new Stack<>();
+            min = new Stack<>();
         }
 
         public void push(int x) {
