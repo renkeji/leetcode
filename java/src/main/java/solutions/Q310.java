@@ -1,9 +1,7 @@
 package solutions;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * For a undirected graph with tree characteristics, we can choose any node as the root. The result graph is then a rooted tree.
@@ -44,9 +42,9 @@ public class Q310 extends Solution {
             return leaf;
         }
 
-        Map<Integer, List<Integer>> graph = new HashMap<>();
+        List<List<Integer>> graph = new ArrayList<>();
         for (int i = 0; i < n; ++i){
-            graph.put(i, new ArrayList<Integer>());
+            graph.add(new ArrayList<Integer>());
         }
 
         int[] neighbors = new int[n];
