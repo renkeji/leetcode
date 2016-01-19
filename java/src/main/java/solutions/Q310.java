@@ -47,10 +47,7 @@ public class Q310 extends Solution {
             graph.add(new ArrayList<Integer>());
         }
 
-        int[] neighbors = new int[n];
         for (int[] edge : edges) {
-            neighbors[edge[0]]++;
-            neighbors[edge[1]]++;
             graph.get(edge[0]).add(edge[1]);
             graph.get(edge[1]).add(edge[0]);
         }
@@ -66,7 +63,8 @@ public class Q310 extends Solution {
             for (int l : leaf) {
                 --n;
                 for (int nb : graph.get(l)) {
-                    if(--neighbors[nb] == 1){
+                    graph.get(nb).remove(new Integer(l));
+                    if(graph.get(nb).size() == 1){
                         newLeaf.add(nb);
                     }
                 }
