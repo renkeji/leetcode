@@ -63,7 +63,7 @@ public class Q310 extends Solution {
 
     private List<List<Integer>> constructGraph(int n, int[][] edges) {
         List<List<Integer>> graph = new ArrayList<>(n);
-        for (int i = 0; i < n; ++i){
+        for (int i = 0; i < n; ++i) {
             graph.add(new ArrayList<Integer>());
         }
 
