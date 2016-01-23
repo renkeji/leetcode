@@ -39,13 +39,13 @@ public class Q320 extends Solution {
     private void dfs(List<String> ans, StringBuilder sb, char[] c, int i, int num) {
         int len = sb.length();
         if (i == c.length) {
-            if(num != 0) {
+            if (num != 0) {
                 sb.append(num);
             }
             ans.add(sb.toString());
         } else {
             dfs(ans, sb, c, i + 1, num + 1);    // abbr c[i]
-            if(num != 0) {
+            if (num != 0) {
                 sb.append(num);                 // not abbr c[i]
             }
             dfs(ans, sb.append(c[i]), c, i + 1, 0);
