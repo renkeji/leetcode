@@ -17,29 +17,19 @@ public class Q162 extends Solution {
     public int findPeakElement(int[] nums) {
         if (nums == null || nums.length == 0) {
             return -1;
-        } else {
-            int left = 0, right = nums.length - 1;
-            while (left <= right) {
-                int mid = left + (right - left) / 2;
-                long value = nums[mid];
-                if (value > getNeighbor(nums, mid-1) && value > getNeighbor(nums, mid+1)) {
-                    return mid;
-                } else if (value < getNeighbor(nums, mid+1)) {
-                    left = mid + 1;
-                } else {
-                    right = mid - 1;
-                }
+        }
+        int left = 0, right = nums.length-1;
+        while (left <= right) {
+            int mid = left+(right-left)/2;
+            if (mid+1 < nums.length && nums[mid] < nums[mid+1]) {
+                left = mid+1;
+            } else if (mid-1 >= 0 && nums[mid] < nums[mid-1]) {
+                right = mid-1;
+            } else {
+                return mid;
             }
-            return -1;
         }
-    }
-
-    private long getNeighbor(int[] nums, int index) {
-        if (index < 0 || index == nums.length) {
-            return Long.MIN_VALUE;
-        } else {
-            return nums[index];
-        }
+        return -1;
     }
 
 }
