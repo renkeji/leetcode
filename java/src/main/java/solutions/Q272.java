@@ -18,38 +18,36 @@ import java.util.*;
 
 public class Q272 extends Solution {
 
-    // Trivial solution -- O(n) time + O(max(logn, k)) space
     public List<Integer> closestKValues(TreeNode root, double target, int k) {
-        List<Integer> ans = new ArrayList<>(k);
-        if (root != null) {
+        if (root == null) {
+            return new ArrayList<>();
+        } else {
             Stack<TreeNode> s = new Stack<>();
-            PriorityQueue<Integer> q = new PriorityQueue<>(k, new Comparator<Integer>() {
-                @Override
-                public int compare(Integer o1, Integer o2) {
-                    return o1.compareTo(o2);
-                }
-            });
+            Integer[] temp = new Integer[k];
             TreeNode curr = root;
+            int i = 0, count = 0;
             while (curr != null || !s.isEmpty()) {
                 if (curr != null) {
                     s.push(curr);
                     curr = curr.left;
                 } else {
                     curr = s.pop();
-                    if (q.size() < k) {
-                        q.offer(curr.val);
-                    } else if (Math.abs(q.peek() - target) > Math.abs(curr.val - target)) {
-                        q.poll();
-                        q.offer(curr.val);
+                    if (count < k) {
+                        temp[count++] = curr.val;
+                    } else {    // ans.size() >= k
+                        int front = temp[i];
+                        if (Math.abs(curr.val - target) < Math.abs(front - target)) {
+                            temp[i] = curr.val;
+                            i = (i+1) % k;
+                        } else {
+                            return Arrays.asList(temp);
+                        }
                     }
                     curr = curr.right;
                 }
             }
-            for (int i : q) {
-                ans.add(i);
-            }
+            return Arrays.asList(temp);
         }
-        return ans;
     }
 
 }
