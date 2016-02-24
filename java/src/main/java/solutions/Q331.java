@@ -1,7 +1,5 @@
 package solutions;
 
-import java.util.Stack;
-
 public class Q331 extends Solution {
 
     public boolean isValidSerialization(String preorder) {
