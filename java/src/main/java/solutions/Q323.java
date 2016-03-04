@@ -1,5 +1,9 @@
 package solutions;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge is a pair of nodes),
  * write a function to find the number of connected components in an undirected graph.
@@ -28,30 +32,83 @@ package solutions;
 public class Q323 extends Solution {
 
     public int countComponents(int n, int[][] edges) {
-        int ans = 0;
-        boolean[][] connected = new boolean[n][n];
-        boolean[] visited = new boolean[n];
-        for (int[] edge : edges) {
-            connected[edge[0]][edge[1]] = true;
-        }
-        for (int i = 0; i < n; ++i) {
-            if (!visited[i]) {
-                dfs(i, n, connected, visited);
-                ans++;
+        if (n <= 0 || edges == null) {
+            return 0;
+        } else {
+            UnionFind uf = new UnionFind(n);
+            for (int[] edge : edges) {
+                uf.union(edge[0], edge[1]);
             }
+            return uf.count;
         }
-        return ans;
     }
 
-    private void dfs(int node, int n, boolean[][] connected, boolean[] visited) {
-        if (!visited[node]) {
-            visited[node] = true;
+    private class UnionFind {
+        private int[] ids;
+        private int[] sz;
+        int count;
+
+        public UnionFind(int n) {
+            ids = new int[n];
+            sz = new int[n];
+            count = n;
             for (int i = 0; i < n; ++i) {
-                if (connected[node][i] || connected[i][node]) {
-                    dfs(i, n, connected, visited);
+                ids[i] = i;
+                sz[i] = 1;
+            }
+        }
+
+        public int find(int i) {
+            while (i != ids[i]) {
+                ids[i] = ids[ids[i]];
+                i = ids[i];
+            }
+            return i;
+        }
+
+        public void union(int i, int j) {
+            i = find(i);
+            j = find(j);
+
+            if (i != j) {
+                if (sz[i] <= sz[j]) {
+                    ids[i] = j;
+                    sz[j] += sz[i];
+                } else {
+                    ids[j] = i;
+                    sz[i] += sz[j];
                 }
+                --count;
             }
         }
     }
+
+
+//    public int countComponents(int n, int[][] edges) {
+//        int ans = 0;
+//        boolean[][] connected = new boolean[n][n];
+//        boolean[] visited = new boolean[n];
+//        for (int[] edge : edges) {
+//            connected[edge[0]][edge[1]] = true;
+//        }
+//        for (int i = 0; i < n; ++i) {
+//            if (!visited[i]) {
+//                dfs(i, n, connected, visited);
+//                ans++;
+//            }
+//        }
+//        return ans;
+//    }
+//
+//    private void dfs(int node, int n, boolean[][] connected, boolean[] visited) {
+//        if (!visited[node]) {
+//            visited[node] = true;
+//            for (int i = 0; i < n; ++i) {
+//                if (connected[node][i] || connected[i][node]) {
+//                    dfs(i, n, connected, visited);
+//                }
+//            }
+//        }
+//    }
 
 }
