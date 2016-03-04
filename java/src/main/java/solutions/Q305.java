@@ -11,7 +11,7 @@ public class Q305 extends Solution {
     // "class island{int parent, int rank}", I didn't do that just for the speed.
 
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
-        List<Integer> ans = new ArrayList<Integer>();
+        List<Integer> ans = new ArrayList<>();
         int[] parent = new int[m*n+1], rank = new int[m*n+1];
         int numIslands = 0;
 
