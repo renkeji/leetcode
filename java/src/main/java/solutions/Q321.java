@@ -45,7 +45,7 @@ public class Q321 extends Solution {
         return ans;
     }
 
-    public boolean greater(int[] nums1, int start1, int[] nums2, int start2) {
+    private boolean greater(int[] nums1, int start1, int[] nums2, int start2) {
         for (; start1 < nums1.length && start2 < nums2.length; start1++, start2++) {
             if (nums1[start1] > nums2[start2]) return true;
             if (nums1[start1] < nums2[start2]) return false;
@@ -53,7 +53,7 @@ public class Q321 extends Solution {
         return start1 != nums1.length;
     }
 
-    public int[] getMaxSubArray(int[] nums, int k) {
+    private int[] getMaxSubArray(int[] nums, int k) {
         int[] res = new int[k];
         int len = 0;
         for (int i = 0; i < nums.length; ++i) {
