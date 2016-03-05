@@ -19,43 +19,80 @@ import java.util.Set;
 public class Q261 extends Solution {
 
     public boolean validTree(int n, int[][] edges) {
-        List<List<Integer>> neighbors = constructNeighbors(n, edges);
-        boolean[] visited = new boolean[n];
-        if (hasCycle(neighbors, 0, -1, visited)) {
-            return false;
-        }
-        for (boolean v : visited) {
-            if (!v) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private List<List<Integer>> constructNeighbors(int n, int[][] edges) {
-        List<List<Integer>> neighbors = new ArrayList<>(n);
+        int[] id = new int[n], sz = new int[n];
         for (int i = 0; i < n; ++i) {
-            neighbors.add(new ArrayList<Integer>());
+            id[i] = i;
+            sz[i] = 1;
         }
-        for (int[] edge : edges) {
-            neighbors.get(edge[0]).add(edge[1]);
-            neighbors.get(edge[1]).add(edge[0]);
-        }
-        return neighbors;
-    }
 
-    private boolean hasCycle(List<List<Integer>> neighbors, int v, int parent, boolean[] visited) {
-        visited[v] = true;
-        for (int n : neighbors.get(v)) {
-            if (!visited[n]) {
-                if (hasCycle(neighbors, n, v, visited)) {
-                    return true;
-                }
-            } else if (n != parent) {
-                return true;
+        // perform union find
+        for (int[] edge : edges) {
+            int x = find(id, edge[0]);
+            int y = find(id, edge[1]);
+
+            // if two vertices happen to be in the same set
+            // then there's a cycle
+            if (x == y) return false;
+
+            // union
+            if (sz[x] <= sz[y]) {
+                id[x] = y;
+                sz[y] += sz[x];
+            } else {
+                id[y] = x;
+                sz[x] += sz[y];
             }
         }
-        return false;
+
+        return edges.length == n - 1;
     }
+
+    private int find(int[] ids, int i) {
+        while (i != ids[i]) {
+            ids[i] = ids[ids[i]];
+            i = ids[i];
+        }
+        return i;
+    }
+
+//    public boolean validTree(int n, int[][] edges) {
+//        List<List<Integer>> neighbors = constructNeighbors(n, edges);
+//        boolean[] visited = new boolean[n];
+//        if (hasCycle(neighbors, 0, -1, visited)) {
+//            return false;
+//        }
+//        for (boolean v : visited) {
+//            if (!v) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//
+//    private List<List<Integer>> constructNeighbors(int n, int[][] edges) {
+//        List<List<Integer>> neighbors = new ArrayList<>(n);
+//        for (int i = 0; i < n; ++i) {
+//            neighbors.add(new ArrayList<Integer>());
+//        }
+//        for (int[] edge : edges) {
+//            neighbors.get(edge[0]).add(edge[1]);
+//            neighbors.get(edge[1]).add(edge[0]);
+//        }
+//        return neighbors;
+//    }
+//
+//    private boolean hasCycle(List<List<Integer>> neighbors, int v, int parent, boolean[] visited) {
+//        visited[v] = true;
+//        for (int n : neighbors.get(v)) {
+//            if (!visited[n]) {
+//                if (hasCycle(neighbors, n, v, visited)) {
+//                    return true;
+//                }
+//            } else if (n != parent) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
 }
