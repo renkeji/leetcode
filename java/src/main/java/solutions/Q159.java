@@ -41,7 +41,7 @@ public class Q159 extends Solution {
 
     public int lengthOfLongestSubstringTwoDistinct(String s) {
         int max = 0;
-        if (s != null && !s.isEmpty()) {
+        if (s != null) {
             char first = ' ', second = ' ';
             int firstCnt = 0, secondCnt = 0;
             int i = 0, j = 0;
