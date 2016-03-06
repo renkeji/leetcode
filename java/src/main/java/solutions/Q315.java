@@ -22,7 +22,7 @@ public class Q315 extends Solution {
 
     public List<Integer> countSmaller(int[] nums) {
         int n = nums.length;
-        List<Integer> ans = new ArrayList<Integer>(Collections.nCopies(n, 0));
+        List<Integer> ans = new ArrayList<>(Collections.nCopies(n, 0));
         Collections.fill(ans, 0);
         Pair[] pairs = new Pair[n];
         for (int i = 0; i < n; ++i) {
