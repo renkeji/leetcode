@@ -21,18 +21,14 @@ import java.util.List;
 public class Q315 extends Solution {
 
     public List<Integer> countSmaller(int[] nums) {
-        List<Integer> ans = new ArrayList<>();
-        if (nums != null && nums.length > 0) {
-            int n = nums.length;
-            for (int i = 0; i < n; ++i) {
-                ans.add(0);
-            }
-            Pair[] pairs = new Pair[n];
-            for (int i = 0; i < n; ++i) {
-                pairs[i] = new Pair(nums[i], i);
-            }
-            sort(pairs, 0, n-1, ans);
+        int n = nums.length;
+        List<Integer> ans = new ArrayList<Integer>(Collections.nCopies(n, 0));
+        Collections.fill(ans, 0);
+        Pair[] pairs = new Pair[n];
+        for (int i = 0; i < n; ++i) {
+            pairs[i] = new Pair(nums[i], i);
         }
+        sort(pairs, 0, n-1, ans);
         return ans;
     }
 
@@ -50,17 +46,17 @@ public class Q315 extends Solution {
         int i = mid, k = n - 1, j = high;
         Pair[] temp = new Pair[n];
         System.arraycopy(pairs, low, temp, 0, n);
-        while (i >= low && j >= mid+1) {
+        while (i >= low && j > mid) {
             if (pairs[i].val > pairs[j].val) {
                 int index = pairs[i].index;
-                int value = ans.get(index) + j - mid;
+                int value = ans.get(index) + (j - mid);
                 ans.set(index, value);
                 temp[k--] = pairs[i--];
             } else {
                 temp[k--] = pairs[j--];
             }
         }
-        while (j >= mid+1) {
+        while (j > mid) {
             temp[k--] = pairs[j--];
         }
         System.arraycopy(temp, 0, pairs, low, n);
