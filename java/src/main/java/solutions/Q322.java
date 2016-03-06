@@ -25,13 +25,12 @@ public class Q322 extends Solution {
         if (coins == null || coins.length == 0) {
             return -1;
         } else {
-            Arrays.sort(coins);
             int[] dp = new int[amount+1];
             for (int i = 1; i <= amount; ++i) {
                 int min = Integer.MAX_VALUE;
-                for (int j = 0; j < coins.length && i >= coins[j]; ++j) {
-                    if (i >= coins[j] && dp[i-coins[j]] != -1) {
-                        min = Math.min(min, dp[i-coins[j]]);
+                for (int coin : coins) {
+                    if (i >= coin && dp[i-coin] != -1) {
+                        min = Math.min(min, dp[i-coin]);
                     }
                 }
                 dp[i] = min == Integer.MAX_VALUE ? -1 : min + 1;
