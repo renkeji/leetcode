@@ -7,26 +7,24 @@ package solutions;
 public class Q161 extends Solution {
 
     public boolean isOneEditDistance(String s, String t) {
-        String small = s.length() < t.length() ? s : t;
-        String large = s.length() < t.length() ? t : s;
+        int sLen = s.length(), tLen = t.length();
+        char[] small = sLen < tLen ? s.toCharArray() : t.toCharArray();
+        char[] large = sLen < tLen ? t.toCharArray() : s.toCharArray();
         boolean isDiff = false;
         int i = 0, j = 0;
-        while (i < small.length() && j < large.length()) {
-            if (small.charAt(i) != large.charAt(j)) {
+        while (i < small.length && j < large.length) {
+            if (small[i++] != large[j++]) {
                 if (isDiff) {
                     return false;
                 } else {
                     isDiff = true;
-                    if (small.length() == large.length()) {
-                        ++i;
+                    if (small.length != large.length) {
+                        --i;
                     }
                 }
-            } else {
-                ++i;
             }
-            ++j;
         }
-        return isDiff ? large.length() - j == 0 : large.length() - j == 1;
+        return isDiff ? large.length == j : large.length - j == 1;
     }
 
 }
