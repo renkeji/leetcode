@@ -19,25 +19,42 @@ package solutions;
 
 public class Q334 extends Solution {
 
+//    public boolean increasingTriplet(int[] nums) {
+//        if (nums == null || nums.length < 3) {
+//            return false;
+//        } else {
+//            int i = 0, j = 1;
+//            while (j < nums.length && nums[j] <= nums[i]) {
+//                ++i;
+//                ++j;
+//            }
+//            for (int k = j + 1; k < nums.length; ++k) {
+//                if (nums[k] > nums[j]) {
+//                    return true;
+//                } else { // nums[k] <= nums[j]
+//                    j = (nums[k] > nums[i] || nums[k-1] < nums[i]) ? k : j;
+//                    i = nums[k-1] < nums[i] ? k-1 : i;
+//                }
+//            }
+//            return false;
+//        }
+//    }
+
     public boolean increasingTriplet(int[] nums) {
-        if (nums == null || nums.length < 3) {
-            return false;
-        } else {
-            int i = 0, j = 1;
-            while (j < nums.length && nums[j] <= nums[i]) {
-                ++i;
-                ++j;
+        int x = Integer.MAX_VALUE;
+        int y = Integer.MAX_VALUE;
+
+        for (int i : nums) {
+            if (x >= i) {
+                x = i;// update x to be a smaller value
+            } else if (y >= i) {
+                y = i; // update y to be a smaller value
+            } else {
+                return true;
             }
-            for (int k = j + 1; k < nums.length; ++k) {
-                if (nums[k] > nums[j]) {
-                    return true;
-                } else { // nums[k] <= nums[j]
-                    j = (nums[k] > nums[i] || nums[k-1] < nums[i]) ? k : j;
-                    i = nums[k-1] < nums[i] ? k-1 : i;
-                }
-            }
-            return false;
         }
+
+        return false;
     }
 
 }
