@@ -30,32 +30,20 @@ import java.util.Map;
 public class Q299 extends Solution {
 
     public String getHint(String secret, String guess) {
-        assert secret != null && guess != null;
-        assert secret.length() == guess.length();
+        int[] table = new int[128];
+        int numBulls = 0, numCows = 0;
+        char[] sChars = secret.toCharArray(), gChars = guess.toCharArray();
 
-        Map<Character, Integer> hm = new HashMap<>();
-
-        int numBulls = 0;
-        int numCows = 0;
-
-        for (int i = 0; i < secret.length(); ++i) {
-            if (secret.charAt(i) == guess.charAt(i)) {
+        for (int i = 0; i < sChars.length; ++i) {
+            char sChar = sChars[i], gChar = gChars[i];
+            if (sChar == gChar) {
                 numBulls++;
             } else {
-                char key = secret.charAt(i);
-                if (!hm.containsKey(key)) {
-                    hm.put(key, 0);
-                }
-                hm.put(key, hm.get(key) + 1);
-            }
-        }
-
-        for (int i = 0; i < secret.length(); ++i) {
-            if (secret.charAt(i) != guess.charAt(i)) {
-                char key = guess.charAt(i);
-                if (hm.containsKey(key) && hm.get(key) > 0) {
+                if (table[sChar]++ < 0) {
                     numCows++;
-                    hm.put(key, hm.get(key) - 1);
+                }
+                if (table[gChar]-- > 0) {
+                    numCows++;
                 }
             }
         }
