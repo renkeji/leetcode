@@ -30,7 +30,7 @@ import java.util.Map;
 public class Q299 extends Solution {
 
     public String getHint(String secret, String guess) {
-        int[] table = new int[128];
+        int[] table = new int[10];
         int numBulls = 0, numCows = 0;
         char[] sChars = secret.toCharArray(), gChars = guess.toCharArray();
 
@@ -39,10 +39,10 @@ public class Q299 extends Solution {
             if (sChar == gChar) {
                 numBulls++;
             } else {
-                if (table[sChar]++ < 0) {
+                if (table[sChar-'0']++ < 0) {
                     numCows++;
                 }
-                if (table[gChar]-- > 0) {
+                if (table[gChar-'0']-- > 0) {
                     numCows++;
                 }
             }
