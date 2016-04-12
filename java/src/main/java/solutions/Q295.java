@@ -16,8 +16,7 @@ public class Q295 extends Solution {
 
         // Adds a number into the data structure.
         public void addNum(int num) {
-            int minSize = minHeap.size(), maxSize = maxHeap.size();
-            if (maxSize == minSize) {
+            if (maxHeap.size() == minHeap.size()) {
                 if (!minHeap.isEmpty() && num > minHeap.peek()) {
                     maxHeap.offer(minHeap.poll());
                     minHeap.offer((double)num);
