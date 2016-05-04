@@ -3,6 +3,7 @@ package solutions;
 import solutions.datastructures.NestedInteger;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -41,28 +42,27 @@ public class Q341 extends Solution {
      */
     public class NestedIterator implements Iterator<Integer> {
 
-        private Stack<NestedInteger> stack;
+        private LinkedList<NestedInteger> list;
 
         public NestedIterator(List<NestedInteger> nestedList) {
-            stack = new Stack<>();
+            list = new LinkedList<>();
             flatten(nestedList);
         }
 
         @Override
         public Integer next() {
-            return hasNext() ? stack.pop().getInteger() : null;
+            return hasNext() ? list.removeFirst().getInteger() : null;
         }
 
         @Override
         public boolean hasNext() {
-            return !stack.isEmpty();
+            return !list.isEmpty();
         }
 
         private void flatten(List<NestedInteger> nestedList) {
-            for (int i = nestedList.size() - 1; i >= 0; --i) {
-                NestedInteger ni = nestedList.get(i);
+            for (NestedInteger ni : nestedList) {
                 if (ni.isInteger()) {
-                    stack.push(ni);
+                    list.add(ni);
                 } else {
                     flatten(ni.getList());
                 }
