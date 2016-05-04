@@ -5,7 +5,6 @@ import solutions.datastructures.NestedInteger;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * Given a nested list of integers, implement an iterator to flatten it.
