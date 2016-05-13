@@ -71,9 +71,9 @@ public class Q254 extends Solution {
         return ans;
     }
 
-    private void getFactors(int n, int factor, List<Integer> path, List<List<Integer>> ans){
+    private void getFactors(int n, int factor, List<Integer> path, List<List<Integer>> ans) {
         int limit = (int)Math.sqrt(n);
-        for (int x = factor; x <= limit; ++x){
+        for (int x = factor; x <= limit; ++x) {
             if (n % x == 0) {
                 path.add(x);
                 getFactors(n/x, x, path, ans);
