@@ -44,23 +44,43 @@ import java.util.List;
 
 public class Q254 extends Solution {
 
+//    public List<List<Integer>> getFactors(int n) {
+//        List<List<Integer>> ans = new ArrayList<>();
+//        getFactors(n, new ArrayList<Integer>(), ans);
+//        return ans;
+//    }
+//
+//    private void getFactors(int n, List<Integer> path, List<List<Integer>> ans) {
+//        if (n == 1 && path.size() > 1) {
+//            ans.add(new ArrayList<>(path));
+//        } else {
+//            int start = path.isEmpty() ? 2 : path.get(path.size() - 1);
+//            for (int i = start; i <= n; ++i) {
+//                if (n % i == 0) {
+//                    path.add(i);
+//                    getFactors(n/i, path, ans);
+//                    path.remove(path.size()-1);
+//                }
+//            }
+//        }
+//    }
+
     public List<List<Integer>> getFactors(int n) {
-        List<List<Integer>> ans = new ArrayList<>();
-        getFactors(n, new ArrayList<Integer>(), ans);
+        List<List<Integer>> ans  = new ArrayList<>();
+        getFactors(n, 2, new ArrayList<Integer>(), ans);
         return ans;
     }
 
-    private void getFactors(int n, List<Integer> path, List<List<Integer>> ans) {
-        if (n == 1 && path.size() > 1) {
-            ans.add(new ArrayList<>(path));
-        } else {
-            int start = path.isEmpty() ? 2 : path.get(path.size() - 1);
-            for (int i = start; i <= n; ++i) {
-                if (n % i == 0) {
-                    path.add(i);
-                    getFactors(n/i, path, ans);
-                    path.remove(path.size()-1);
-                }
+    private void getFactors(int n, int factor, List<Integer> path, List<List<Integer>> ans){
+        int limit = (int)Math.sqrt(n);
+        for (int x = factor; x <= limit; ++x){
+            if (n % x == 0) {
+                path.add(x);
+                getFactors(n/x, x, path, ans);
+                path.add(n/x);
+                ans.add(new ArrayList<>(path));
+                path.remove(path.size()-1);
+                path.remove(path.size()-1);
             }
         }
     }
