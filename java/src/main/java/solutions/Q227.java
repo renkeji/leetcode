@@ -28,26 +28,24 @@ public class Q227 extends Solution {
             }
 
             if (!Character.isDigit(ch) && (ch != ' ') || i == s.length() - 1) {
-                if (ch != ')' && ch != '(') {
-                    switch (preOp) {
-                        case '+':
-                            result += num;
-                            preVal = num;
-                            break;
-                        case '-':
-                            result -= num;
-                            preVal = -num;
-                            break;
-                        case '*':
-                            result = result - preVal + preVal*num;
-                            preVal = preVal*num;
-                            break;
-                        case '/':
-                            result = result - preVal + preVal / num;
-                            preVal = preVal / num;
-                            break;
-                        default:
-                    }
+                switch (preOp) {
+                    case '+':
+                        result += num;
+                        preVal = num;
+                        break;
+                    case '-':
+                        result -= num;
+                        preVal = -num;
+                        break;
+                    case '*':
+                        result = result - preVal + preVal * num;
+                        preVal = preVal * num;
+                        break;
+                    case '/':
+                        result = result - preVal + preVal / num;
+                        preVal = preVal / num;
+                        break;
+                    default: break;
                 }
                 num = 0;
                 preOp = ch;
