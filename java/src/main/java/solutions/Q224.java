@@ -20,30 +20,30 @@ import java.util.Stack;
 public class Q224 extends Solution {
 
     public int calculate(String s) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(1);
-        stack.push(1);
-        int res = 0;
-        for (int i = 0; i < s.length(); i++) {
+        if (s == null || s.isEmpty()) return 0;
+        s = "(" + s + ")";
+        int[] p = {0};
+        return eval(s, p);
+    }
+
+    // calculate value between parentheses
+    private int eval(String s, int[] p) {
+        int val = 0;
+        int i = p[0];
+        int op = 1; //1:+ -1:-
+        int num = 0;
+        while (i < s.length()) {
             char c = s.charAt(i);
-            if (Character.isDigit(c)) {
-                int num = c - '0';
-                int j = i + 1;
-                while (j < s.length() && Character.isDigit(s.charAt(j))) {
-                    num = 10 * num + (s.charAt(j) - '0');
-                    j++;
-                }
-                res += stack.pop() * num;
-                i = j - 1;
-            } else if (c == '+' || c == '(') {
-                stack.push(stack.peek());
-            } else if (c == '-') {
-                stack.push(-1 * stack.peek());
-            } else if (c == ')') {
-                stack.pop();
+            switch (c) {
+                case '+': val = val + op * num; num = 0; op = 1; i++; break;            // end of number and set operator
+                case '-': val = val + op * num; num = 0; op = -1; i++; break;           // end of number and set operator
+                case '(': p[0] = i + 1; val = val + op * eval(s, p); i = p[0]; break;   // start a new eval
+                case ')': p[0] = i + 1; return val + op * num;                          // end current eval and return. Note that we need to deal with the last num
+                case ' ': i++; continue;
+                default : num = num * 10 + c - '0'; i++;
             }
         }
-        return res;
+        return val;
     }
 
 }
