@@ -13,23 +13,17 @@ import solutions.datastructures.ListNode;
 public class Q203 extends Solution {
 
     public ListNode removeElements(ListNode head, int val) {
-        ListNode prev = null;
-        ListNode newHead = null;
-        while (head != null) {
-            while (head != null && head.val == val) {
-                head = head.next;
+        ListNode dummy = new ListNode(0);
+        ListNode prev = dummy, p = head;
+        while (p != null) {
+            if (p.val != val) {
+                prev.next = p;
+                prev = p;
             }
-            // head == null || head.val != val
-            if (prev != null) {
-                prev.next = head;
-            }
-            prev = head;
-            if (newHead == null) {
-                newHead = prev;
-            }
-            head = head != null ? head.next : null;
+            p = p.next;
         }
-        return newHead;
+        prev.next = null;
+        return dummy.next;
     }
 
 }
