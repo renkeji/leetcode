@@ -81,10 +81,10 @@ public class Q212 extends Solution {
         }
 
         board[i][j] = '#';
-        if(i > 0) dfs(board, i - 1, j ,p, res);
-        if(j > 0) dfs(board, i, j - 1, p, res);
-        if(i < board.length - 1) dfs(board, i + 1, j, p, res);
-        if(j < board[0].length - 1) dfs(board, i, j + 1, p, res);
+        if (i > 0) dfs(board, i - 1, j, p, res);
+        if (j > 0) dfs(board, i, j - 1, p, res);
+        if (i < board.length - 1) dfs(board, i + 1, j, p, res);
+        if (j < board[0].length - 1) dfs(board, i, j + 1, p, res);
         board[i][j] = c;
     }
 
