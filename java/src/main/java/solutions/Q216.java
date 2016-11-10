@@ -29,19 +29,13 @@ public class Q216 extends Solution {
     }
 
     private void combinationSum3(int k, int n, List<Integer> path, List<List<Integer>> ans) {
-        if (k == 0) {
-            int sum = 0;
-            for (int i : path) {
-                sum += i;
-            }
-            if (sum == n) {
-                ans.add(new ArrayList<>(path));
-            }
+        if (k == 0 && n == 0) {
+            ans.add(new ArrayList<Integer>(path));
         } else {
             int start = path.isEmpty() ? 1 : path.get(path.size() - 1) + 1;
             for (int i = start; i <= 9; ++i) {
                 path.add(i);
-                combinationSum3(k - 1, n, path, ans);
+                combinationSum3(k - 1, n - i, path, ans);
                 path.remove(path.size() - 1);
             }
         }
