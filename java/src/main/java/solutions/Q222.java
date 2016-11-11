@@ -15,14 +15,14 @@ public class Q222 extends Solution {
 
     public int countNodes(TreeNode root) {
         if (root == null) return 0;
-        TreeNode cur = root;
+        TreeNode curr = root;
         int count = 1;
-        while (cur.left != null) {
-            if (getHeight(cur.left) > getHeight(cur.right)) {
-                cur = cur.left;
+        while (curr.left != null) {
+            if (getHeight(curr.left) > getHeight(curr.right)) {
+                curr = curr.left;
                 count *= 2;
             } else {
-                cur = cur.right;
+                curr = curr.right;
                 count = count * 2 + 1;
             }
         }
