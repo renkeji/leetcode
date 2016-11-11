@@ -17,26 +17,28 @@ import java.util.List;
 public class Q222 extends Solution {
 
     public int countNodes(TreeNode root) {
-        if (root == null) {
-            return 0;
-        } else {
-            int leftHeight = getTreeHeight(root, true);
-            int rightHeight = getTreeHeight(root, false);
-            if (leftHeight == rightHeight) {
-                return (1 << leftHeight) - 1;
+        if (root == null) return 0;
+        TreeNode cur = root;
+        int count = 1;
+        while (cur.left != null) {
+            if (getHeight(cur.left) > getHeight(cur.right)) {
+                cur = cur.left;
+                count *= 2;
             } else {
-                return countNodes(root.left) + countNodes(root.right) + 1;
+                cur = cur.right;
+                count = count * 2 + 1;
             }
         }
+        return count;
     }
 
-    private int getTreeHeight(TreeNode root, boolean isLeft) {
-        int count = 0;
+    private int getHeight(TreeNode root) {
+        int height = -1;
         while (root != null) {
-            ++count;
-            root = isLeft ? root.left : root.right;
+            root = root.left;
+            height++;
         }
-        return count;
+        return height;
     }
 
 }
