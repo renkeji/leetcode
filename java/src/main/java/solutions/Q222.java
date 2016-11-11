@@ -2,9 +2,6 @@ package solutions;
 
 import solutions.datastructures.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Given a complete binary tree, count the number of nodes.
  *
