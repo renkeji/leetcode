@@ -23,14 +23,14 @@ public class Q216 extends Solution {
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> ans = new ArrayList<>();
         if (k > 0 && n > 0) {
-            combinationSum3(k, n, new ArrayList<Integer>(), ans);
+            combinationSum3(k, n, new ArrayList<>(), ans);
         }
         return ans;
     }
 
     private void combinationSum3(int k, int n, List<Integer> path, List<List<Integer>> ans) {
         if (k == 0 && n == 0) {
-            ans.add(new ArrayList<Integer>(path));
+            ans.add(new ArrayList<>(path));
         } else {
             int start = path.isEmpty() ? 1 : path.get(path.size() - 1) + 1;
             for (int i = start; i <= 9; ++i) {
