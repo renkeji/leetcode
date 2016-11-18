@@ -26,8 +26,8 @@ public class Q251 extends Solution {
         private Iterator<Integer> inner;
 
         public Vector2D(List<List<Integer>> vec2d) {
-            this.outer = (vec2d != null && !vec2d.isEmpty()) ? vec2d.iterator() : Collections.<List<Integer>>emptyIterator();
-            this.inner = outer.hasNext() ? outer.next().iterator() : Collections.<Integer>emptyIterator();
+            this.outer = (vec2d != null && !vec2d.isEmpty()) ? vec2d.iterator() : Collections.emptyIterator();
+            this.inner = outer.hasNext() ? outer.next().iterator() : Collections.emptyIterator();
         }
 
         public int next() {
