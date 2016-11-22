@@ -15,7 +15,6 @@ package solutions;
  *  [1,1,0,0]]
  *
  *  Answer: 16
- *  Explanation: The perimeter is the 16 yellow stripes in the image below:
  */
 
 public class Q463 extends Solution {
