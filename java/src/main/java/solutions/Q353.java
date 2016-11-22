@@ -96,9 +96,9 @@ public class Q353 extends Solution {
          @param food - A list of food positions
          E.g food = [[1,1], [1,0]] means the first food is positioned at [1,1], the second is at [1,0]. */
         public SnakeGame(int width, int height, int[][] food) {
-            score = 0;
-            snake = new LinkedList<>();
-            hs = new HashSet<>();
+            this.score = 0;
+            this.snake = new LinkedList<>();
+            this.hs = new HashSet<>();
             this.width = width;
             this.height = height;
             this.food = food;
