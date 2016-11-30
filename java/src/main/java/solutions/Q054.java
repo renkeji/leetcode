@@ -29,9 +29,7 @@ public class Q054 extends Solution {
     }
 
     private void spiralOrder(int[][] matrix, int m, int n, int k, List<Integer> ans) {
-        if (m <= 0 || n <= 0) {
-            return;
-        } else {
+        if (m > 0 && n > 0) {
             if (m == 1) {
                 for (int j = 0; j < n; ++j) {
                     ans.add(matrix[k][j+k]);
