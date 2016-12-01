@@ -20,28 +20,44 @@ public class Q157 extends Reader4 {
      * @param n   Maximum number of characters to read
      * @return    The number of characters read
      */
+//    public int read(char[] buf, int n) {
+//        int cnt = 0;
+//        char[] buf4 = new char[4];
+//        int readSize = read4(buf4);
+//        while (cnt <= n - 4 && readSize == 4) {
+//            System.arraycopy(buf4, 0, buf, cnt, 4);
+//            cnt += 4;
+//            readSize = read4(buf4);
+//        }
+//        // cnt > n - 4 || readSize < 4
+//        if (cnt > n - 4) {
+//            int minSize = Math.min(n - cnt, readSize);
+//            System.arraycopy(buf4, 0, buf, cnt, minSize);
+//            cnt += minSize;
+//        } else {    // readSize < 4
+//            if (readSize != 0) {
+//                System.arraycopy(buf4, 0, buf, cnt, readSize);
+//                cnt += readSize;
+//            }
+//        }
+//        return cnt;
+//    }
+
     public int read(char[] buf, int n) {
-        int cnt = 0;
         char[] buf4 = new char[4];
-        int readSize = read4(buf4);
-        while (cnt <= n - 4 && readSize == 4) {
-            System.arraycopy(buf4, 0, buf, cnt, 4);
-            cnt += 4;
-            buf4 = new char[4];
-            readSize = read4(buf4);
-        }
-        // cnt > n - 4 || readSize < 4
-        if (cnt > n - 4) {
-            int minSize = Math.min(n - cnt, readSize);
-            System.arraycopy(buf4, 0, buf, cnt, minSize);
-            cnt += minSize;
-        } else {    // readSize < 4
-            if (readSize != 0) {
-                System.arraycopy(buf4, 0, buf, cnt, readSize);
-                cnt += readSize;
+        int len = 0, len4 = 0;
+        for (int i = 0; i < n/4; ++i) {
+            len4 = read4(buf4);
+            System.arraycopy(buf4, 0, buf, len, len4);
+            len += len4;
+            if (len4 < 4) {
+                return len;
             }
         }
-        return cnt;
+        len4 = Math.min(n % 4, read4(buf4));
+        System.arraycopy(buf4, 0, buf, len, len4);
+        len += len4;
+        return len;
     }
 
 }
