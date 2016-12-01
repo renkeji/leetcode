@@ -15,9 +15,40 @@ import solutions.datastructures.Reader4;
       int read4(char[] buf); */
 public class Q158 extends Reader4 {
 
+//    private char[] buf4 = new char[4];
+//    private int currIndex = 0;
+//    private int lastReadSize = 0;
+
+//    /**
+//     * @param buf Destination buffer
+//     * @param n   Maximum number of characters to read
+//     * @return    The number of characters read
+//     */
+//    public int read(char[] buf, int n) {
+//        int cnt = 0;
+//        while (cnt < n) {
+//            if (currIndex == lastReadSize) {
+//                lastReadSize = read4(buf4);
+//                currIndex = 0;
+//            }
+//            if (lastReadSize == 0) {
+//                break;
+//            } else {
+//                int len = lastReadSize - currIndex;
+//                if (n - cnt < 4 || lastReadSize < 4) {
+//                    len = Math.min(lastReadSize - currIndex, n - cnt);
+//                }
+//                System.arraycopy(buf4, currIndex, buf, cnt, len);
+//                currIndex += len;
+//                cnt += len;
+//            }
+//        }
+//        return cnt;
+//    }
+
     private char[] buf4 = new char[4];
-    private int currIndex = 0;
-    private int lastReadSize = 0;
+    private int len4 = 0;
+    private int index4 = 0;
 
     /**
      * @param buf Destination buffer
@@ -25,25 +56,24 @@ public class Q158 extends Reader4 {
      * @return    The number of characters read
      */
     public int read(char[] buf, int n) {
-        int cnt = 0;
-        while (cnt < n) {
-            if (currIndex == lastReadSize) {
-                lastReadSize = read4(buf4);
-                currIndex = 0;
+        int len = 0;
+        while (n != 0) {
+            if (len4 == 0) {
+                len4 = read4(buf4);
+                index4 = 0;
             }
-            if (lastReadSize == 0) {
-                break;
+            int size = Math.min(n, len4);
+            if (size == 0) {
+                return len;
             } else {
-                int len = lastReadSize - currIndex;
-                if (n - cnt < 4 || lastReadSize < 4) {
-                    len = Math.min(lastReadSize - currIndex, n - cnt);
-                }
-                System.arraycopy(buf4, currIndex, buf, cnt, len);
-                currIndex += len;
-                cnt += len;
+                System.arraycopy(buf4, index4, buf, len, size);
+                n -= size;
+                len4 -= size;
+                len += size;
+                index4 += size;
             }
         }
-        return cnt;
+        return len;
     }
 
 }
