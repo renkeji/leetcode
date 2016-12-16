@@ -26,7 +26,7 @@ public class Q356 extends Solution {
     public boolean isReflected(int[][] points) {
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
-        HashSet<String> set = new HashSet<>();
+        Set<String> set = new HashSet<>();
         for (int[] p : points) {
             max = Math.max(max, p[0]);
             min = Math.min(min, p[0]);
