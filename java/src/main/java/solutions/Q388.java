@@ -44,79 +44,19 @@ import java.util.Stack;
 public class Q388 extends Solution {
 
     public int lengthLongestPath(String input) {
-        String[] paths = input.split("\n");
-        int[] stack = new int[paths.length + 1];
-        int maxLen = 0;
-        for (String path : paths) {
+        Stack<Integer> stack = new Stack<>();
+        int max = 0;
+        for (String path : input.split("\n")) {
             int level = path.lastIndexOf("\t") + 1;
-            int curLen = stack[level + 1] = stack[level] + path.length() - level + 1;
+            while (!stack.isEmpty() && stack.size() > level) {
+                stack.pop();
+            }
+            stack.push((stack.isEmpty() ? 0 : stack.peek()) + path.length() - level + 1); // 1 is '/'
             if (path.contains(".")) {
-                maxLen = Math.max(maxLen, curLen - 1);
+                max = Math.max(max, stack.peek() - 1);
             }
         }
-        return maxLen;
+        return max;
     }
-
-//    public int lengthLongestPath(String input) {
-//        int max = 0;
-//        if (input != null && !input.isEmpty()) {
-//            int level = 0;
-//            char[] inputChars = input.toCharArray();
-//            Stack<String> stack = new Stack<>();
-//            StringBuilder sb = new StringBuilder();
-//            boolean isFile = extractDirOrFileName(inputChars, 0, sb);
-//            stack.push(sb.toString());
-//            int pathLength = sb.length();
-//            if (isFile) {
-//                max = pathLength;
-//            } else {
-//                int i = pathLength;
-//                while (i != inputChars.length) {
-//                    int currLevel = determineLevel(inputChars, i);
-//                    i += currLevel + 1;
-//                    sb.setLength(0);
-//                    isFile = extractDirOrFileName(inputChars, i, sb);
-//                    String name = sb.toString();
-//                    while (!stack.isEmpty() && currLevel <= level) {
-//                        String top = stack.pop();
-//                        level--;
-//                        pathLength -= (top.length() + 1);
-//                    }
-//                    stack.push(name);
-//                    pathLength += name.length() + 1;
-//                    if (isFile) {
-//                        max = Math.max(max, pathLength);
-//                    }
-//                    level = currLevel;
-//                    i += name.length();
-//                }
-//            }
-//        }
-//        return max;
-//    }
-//
-//    private boolean extractDirOrFileName(char[] input, int start, StringBuilder sb) {
-//        int i = start;
-//        boolean isFile = false;
-//        while (i != input.length && input[i] != '\n') {
-//            char ch = input[i++];
-//            if (ch == '.') {
-//                isFile = true;
-//            }
-//            sb.append(ch);
-//        }
-//        return isFile;
-//    }
-//
-//    private int determineLevel(char[] input, int start) {
-//        int level = 0;
-//        int i = start;
-//        while (i != input.length && (input[i] == '\t' || input[i] == '\n')) {
-//            if (input[i++] == '\t') {
-//                level++;
-//            }
-//        }
-//        return level;
-//    }
 
 }
