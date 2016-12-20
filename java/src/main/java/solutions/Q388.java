@@ -22,7 +22,7 @@ import java.util.Stack;
  *          subsubdir1
  *      subdir2
  *          subsubdir2
- *          file2.ext
+ *              file2.ext
  *
  * The directory dir contains two sub-directories subdir1 and subdir2. subdir1 contains a file file1.ext and an empty second-level sub-directory subsubdir1.
  * subdir2 contains a second-level sub-directory subsubdir2 containing a file file2.ext.
