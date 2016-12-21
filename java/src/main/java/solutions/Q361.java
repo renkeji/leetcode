@@ -47,23 +47,21 @@ public class Q361 extends Solution {
     //calculate killed enemies for row i from column j
     private int killedEnemiesRow(char[][] grid, int i, int j) {
         int num = 0;
-        while (j < grid[0].length && grid[i][j] != 'W') {
+        for (; j < grid[0].length && grid[i][j] != 'W'; ++j) {
             if (grid[i][j] == 'E') {
                 num++;
             }
-            j++;
         }
         return num;
     }
 
-    //calculate killed enemies for  column j from row i
+    //calculate killed enemies for column j from row i
     private int killedEnemiesCol(char[][] grid, int i, int j) {
         int num = 0;
-        while (i < grid.length && grid[i][j] != 'W') {
+        for (; i < grid.length && grid[i][j] != 'W'; ++i) {
             if (grid[i][j] == 'E') {
                 num++;
             }
-            i++;
         }
         return num;
     }
