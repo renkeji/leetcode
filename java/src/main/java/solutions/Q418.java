@@ -61,32 +61,32 @@ public class Q418 extends Solution {
 
 //    public int wordsTyping(String[] sentence, int rows, int cols) {
 //        String s = String.join(" ", sentence) + " ";
-//        int start = 0, l = s.length();
+//        int start = 0, len = s.length();
 //        for (int i = 0; i < rows; ++i) {
 //            start += cols;
-//            if (s.charAt(start % l) == ' ') {
+//            if (s.charAt(start % len) == ' ') {
 //                start++;
 //            } else {
-//                while (start > 0 && s.charAt((start-1) % l) != ' ') {
+//                while (start > 0 && s.charAt((start-1) % len) != ' ') {
 //                    start--;
 //                }
 //            }
 //        }
-//        return start / s.length();
+//        return start / len;
 //    }
 
     public int wordsTyping(String[] sentence, int rows, int cols) {
         String s = String.join(" ", sentence) + " ";
-        int len = s.length(), count = 0;
+        int start = 0, len = s.length();
         int[] dp = new int[len];
         for (int i = 1; i < len; ++i) {
             dp[i] = s.charAt(i) == ' ' ? 1 : dp[i-1] - 1;
         }
         for (int i = 0; i < rows; ++i) {
-            count += cols;
-            count += dp[count % len];
+            start += cols;
+            start += dp[start % len];
         }
-        return count / len;
+        return start / len;
     }
 
 }
