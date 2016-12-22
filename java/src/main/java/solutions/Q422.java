@@ -76,13 +76,10 @@ import java.util.List;
 public class Q422 extends Solution {
 
     public boolean validWordSquare(List<String> words) {
-        for (int k = 0; k < words.size(); ++k) {
-            String word = words.get(k);
-            for (int i = 0; i < word.length(); ++i) {
-                char ch = word.charAt(i);
-                if (i >= words.size()) return false;
-                if (k >= words.get(i).length()) return false;
-                if (words.get(i).charAt(k) != ch) return false;
+        for (int i = 0; i < words.size(); i++) {
+            for (int j = 0; j < words.get(i).length(); j++) {
+                if (j >= words.size() || words.get(j).length() <= i || words.get(j).charAt(i) != words.get(i).charAt(j))
+                    return false;
             }
         }
         return true;
