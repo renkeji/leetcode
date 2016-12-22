@@ -31,41 +31,43 @@ import solutions.datastructures.TreeNode;
 
 public class Q298 extends Solution {
 
-    private class IntMutable {
-        int val;
-        public IntMutable(int val) {
-            this.val = val;
-        }
-    }
-
     public int longestConsecutive(TreeNode root) {
-        IntMutable max = new IntMutable(0);
-        longestConsecutive(root, max);
-        return max.val;
+        return dfs(root, null, 0);
     }
 
-    private int longestConsecutive(TreeNode root, IntMutable max) {
-        if (root == null) {
-            return 0;
-        } else {
-            int left = longestConsecutive(root.left, max);
-            if (root.left != null && root.left.val == root.val + 1) {
-                ++left;
-            } else {
-                left = 1;
-            }
-            max.val = Math.max(left, max.val);
-
-            int right = longestConsecutive(root.right, max);
-            if (root.right != null && root.right.val == root.val + 1) {
-                ++right;
-            } else {
-                right = 1;
-            }
-            max.val = Math.max(right, max.val);
-
-            return Math.max(left, right);
-        }
+    private int dfs(TreeNode p, TreeNode parent, int length) {
+        if (p == null) return length;
+        length = (parent != null && p.val == parent.val + 1) ? length + 1 : 1;
+        return Math.max(length, Math.max(dfs(p.left, p, length), dfs(p.right, p, length)));
     }
+
+//    private class IntMutable {
+//        int val;
+//        public IntMutable(int val) {
+//            this.val = val;
+//        }
+//    }
+//
+//    public int longestConsecutive(TreeNode root) {
+//        IntMutable max = new IntMutable(0);
+//        longestConsecutive(root, max);
+//        return max.val;
+//    }
+//
+//    private int longestConsecutive(TreeNode root, IntMutable max) {
+//        if (root == null) {
+//            return 0;
+//        } else {
+//            int left = longestConsecutive(root.left, max);
+//            left = (root.left != null && root.left.val == root.val + 1) ? left + 1 : 1;
+//
+//            int right = longestConsecutive(root.right, max);
+//            right = (root.right != null && root.right.val == root.val + 1) ? right + 1: 1;
+//
+//            max.val = Math.max(right, Math.max(left, max.val));
+//
+//            return Math.max(left, right);
+//        }
+//    }
 
 }
