@@ -16,10 +16,9 @@ public class Q017 extends Solution {
 
     public List<String> letterCombinations(String digits) {
         List<String> ans = new ArrayList<>();
-        if (digits == null || digits.isEmpty()) {
-            return ans;
+        if (digits != null && !digits.isEmpty()) {
+            letterCombinations(digits.toCharArray(), 0, new StringBuilder(), 0, ans);
         }
-        letterCombinations(digits.toCharArray(), 0, new StringBuilder(), 0, ans);
         return ans;
     }
 
