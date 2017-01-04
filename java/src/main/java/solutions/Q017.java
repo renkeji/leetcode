@@ -28,8 +28,7 @@ public class Q017 extends Solution {
         } else {
             char[] letters = mapDigit(chars[index]).toCharArray();
             for (char letter : letters) {
-                sb.append(letter);
-                letterCombinations(chars, index+1, sb, sbLen+1, ans);
+                letterCombinations(chars, index+1, sb.append(letter), sbLen+1, ans);
                 sb.setLength(sbLen);
             }
         }
