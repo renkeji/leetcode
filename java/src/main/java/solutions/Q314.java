@@ -62,7 +62,7 @@ public class Q314 extends Solution {
             int col = cols.poll();
 
             if (!map.containsKey(col)) {
-                map.put(col, new ArrayList<Integer>());
+                map.put(col, new ArrayList<>());
             }
             map.get(col).add(node.val);
 
