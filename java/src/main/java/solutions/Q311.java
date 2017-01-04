@@ -1,6 +1,8 @@
 package solutions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,9 +38,10 @@ public class Q311 extends Solution {
 //
 //        for (int i = 0; i < n; ++i) {
 //            for (int k = 0; k < m; ++k) {
-//                if (A[i][k] == 0) continue;
-//                for (int j = 0; j < p; ++j) {
-//                    C[i][j] += A[i][k] * B[k][j];
+//                if (A[i][k] != 0) {
+//                    for (int j = 0; j < p; ++j) {
+//                        C[i][j] += A[i][k] * B[k][j];
+//                    }
 //                }
 //            }
 //        }
@@ -46,29 +49,33 @@ public class Q311 extends Solution {
 //    }
 
     public int[][] multiply(int[][] A, int[][] B) {
-        if (A == null || A[0] == null || B == null || B[0] == null) return null;
         int n = A.length, m = A[0].length, p = B[0].length;
         int[][] C = new int[n][p];
-        Map<Integer, Map<Integer, Integer>> hm = new HashMap<>();
 
-        for(int k = 0; k < m; ++k) {
-            hm.put(k, new HashMap<Integer, Integer>());
-            for(int j = 0; j < p; ++j) {
-                if (B[k][j] != 0){
-                    hm.get(k).put(j, B[k][j]);
+        List[] indexA = new List[n];
+        for (int i = 0; i < n; i++) {
+            List<Integer> numsA = new ArrayList<>();
+            for (int j = 0; j < m; j++) {
+                if (A[i][j] != 0) {
+                    numsA.add(j);
+                    numsA.add(A[i][j]);
+                }
+            }
+            indexA[i] = numsA;
+        }
+
+        for (int i = 0; i < n; i++) {
+            List<Integer> numsA = indexA[i];
+            for (int k = 0; k < numsA.size() - 1; k += 2) {
+                int colA = numsA.get(k);
+                int valA = numsA.get(k + 1);
+                for (int j = 0; j < k; j++) {
+                    int valB = B[colA][j];
+                    C[i][j] += valA * valB;
                 }
             }
         }
 
-        for(int i = 0; i < n; ++i) {
-            for(int k = 0; k < m; ++k) {
-                if (A[i][k] != 0){
-                    for (Integer j: hm.get(k).keySet()) {
-                        C[i][j] += A[i][k] * hm.get(k).get(j);
-                    }
-                }
-            }
-        }
         return C;
     }
 
