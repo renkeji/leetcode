@@ -45,43 +45,45 @@ import java.util.*;
 public class Q314 extends Solution {
 
     public List<List<Integer>> verticalOrder(TreeNode root) {
-        List<List<Integer>> ans = new ArrayList<>();
-        if (root != null) {
-            TreeMap<Integer, List<Integer>> tm = new TreeMap<>();
-            LinkedList<Pair> curr = new LinkedList<>();
-            LinkedList<Pair> next = new LinkedList<>();
-            curr.add(new Pair(0, root));
-            while (!curr.isEmpty()) {
-                while (!curr.isEmpty()) {
-                    Pair p = curr.removeFirst();
-                    if (!tm.containsKey(p.col)) {
-                        tm.put(p.col, new ArrayList<Integer>());
-                    }
-                    tm.get(p.col).add(p.node.val);
-                    if (p.node.left != null) {
-                        next.add(new Pair(p.col-1, p.node.left));
-                    }
-                    if (p.node.right != null) {
-                        next.add(new Pair(p.col+1, p.node.right));
-                    }
-                }
-                curr = next;
-                next = new LinkedList<>();
-            }
-            for (Map.Entry<Integer, List<Integer>> entry : tm.entrySet()) {
-                ans.add(entry.getValue());
-            }
-        }
-        return ans;
-    }
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) return res;
 
-    private class Pair {
-        int col;
-        TreeNode node;
-        Pair(int col, TreeNode node) {
-            this.col = col;
-            this.node = node;
+        Map<Integer, ArrayList<Integer>> map = new HashMap<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        Queue<Integer> cols = new LinkedList<>();
+
+        q.add(root);
+        cols.add(0);
+
+        int min = 0, max = 0;
+
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
+            int col = cols.poll();
+
+            if (!map.containsKey(col)) {
+                map.put(col, new ArrayList<Integer>());
+            }
+            map.get(col).add(node.val);
+
+            if (node.left != null) {
+                q.add(node.left);
+                cols.add(col - 1);
+                min = Math.min(min, col - 1);
+            }
+
+            if (node.right != null) {
+                q.add(node.right);
+                cols.add(col + 1);
+                max = Math.max(max, col + 1);
+            }
         }
+
+        for (int i = min; i <= max; i++) {
+            res.add(map.get(i));
+        }
+
+        return res;
     }
 
 }
