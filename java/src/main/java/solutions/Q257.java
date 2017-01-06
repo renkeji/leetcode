@@ -26,9 +26,8 @@ public class Q257 extends Solution {
         if (node != null) {
             if (node.left == null && node.right == null) {
                 String s = "";
-                for (TreeNode n : path) {
+                for (TreeNode n : path)
                     s += n.val + "->";
-                }
                 s += node.val;
                 ans.add(s);
             } else {
@@ -42,7 +41,7 @@ public class Q257 extends Solution {
 
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> ans = new ArrayList<>();
-        binaryTreePaths(root, new ArrayList<TreeNode>(), ans);
+        binaryTreePaths(root, new ArrayList<>(), ans);
         return ans;
     }
 
